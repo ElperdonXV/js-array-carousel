@@ -22,6 +22,32 @@ const text = [
     'Et temporibus voluptatum suscipit tempore aliquid deleniti aut veniam inventore eligendi ex ad ullam,',
 ]
 
+
+
+const containerImages = document.querySelector('.slider  .img-container');
+const containerController = document.querySelector('.img-slide');
+//const containerDots = document.querySelector('.slider  .list');
+
+//girato sull-array delle immagini
+for (let index = 0; index < items.length; index++) {
+    let image = `<img src="${items[index]}" alt="">`;
+    //let dot = `<div class="list-item"></div>`;
+
+    // if (index == 0) {
+    //   image = `<img class="first active" src="${images[index]}" alt="">`;
+    // }
+    // else if (index == images.length - 1) {
+    //   image = `<img class="last" src="${images[index]}" alt="">`;
+    // }
+
+    containerImages.innerHTML += image;
+    containerController.innerHTML += image;
+  //  containerDots.innerHTML += dot;
+}
+
+
+
+
 //Consegna:
 //Dati tre array contenenti:
 //-una lista ordinata di 5 immagini,
