@@ -17,7 +17,6 @@
     transform: translate(-50%, -50%);
     width: 80%;
     height: 60%;
-    background-color: blue;
 }
 
 .img-slide{
@@ -50,6 +49,9 @@
     opacity: 100%;
 }
 
+.img-container{
+    position: relative;
+}
 
 .img-container,
 .img-container .img {
@@ -63,7 +65,7 @@
     height: 100%;
     object-fit: cover;
 }
-.images-container img.active {
+.img-container img.active {
     display: block;
 }
 
@@ -78,4 +80,13 @@
 .img-slide img.preview{
     filter: brightness(100%);
     border: 3px solid lightgrey;
+}
+
+
+.caption{
+    position: absolute;
+    bottom: 10%;
+    right: 5%;
+    text-align: right;
+    color: white;
 }

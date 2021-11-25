@@ -45,10 +45,19 @@ for (let index = 0; index < items.length; index++) {
   //  containerDots.innerHTML += dot;
 }
 
-const imagesDom = document.querySelectorAll('.slider img');
+const imagesDom = document.querySelectorAll('.img-container img');
 console.log(imagesDom);
 
+const slideDom = document.querySelectorAll('.img-slide img');
 
+//preso elemento 0
+imagesDom[0].classList.add('first', 'active');
+
+//preso elemento ultimo
+imagesDom[imagesDom.length - 1].classList.add('last');
+
+slideDom[0].classList.add('first', 'preview');
+slideDom[dotsDom.length - 1].classList.add('last');
 
 
 //Consegna:
