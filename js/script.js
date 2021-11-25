@@ -26,11 +26,15 @@ const text = [
 
 const containerImages = document.querySelector('.slider  .img-container');
 const containerController = document.querySelector('.img-slide');
+const containerTitle = document.querySelector('.caption .title');
+const containerText = document.querySelector('.caption .subtitle');
 //const containerDots = document.querySelector('.slider  .list');
 
 //girato sull-array delle immagini
 for (let index = 0; index < items.length; index++) {
     let image = `<img src="${items[index]}" alt="">`;
+    let titleGroup = `<h1>${title[index]}</h1>`;
+    let textGroup = `<h2>${text[index]}</h2>`;
     //let dot = `<div class="list-item"></div>`;
 
     // if (index == 0) {
@@ -42,22 +46,32 @@ for (let index = 0; index < items.length; index++) {
 
     containerImages.innerHTML += image;
     containerController.innerHTML += image;
+    containerTitle.innerHTML += titleGroup;
+    containerText.innerHTML += textGroup;
   //  containerDots.innerHTML += dot;
 }
+
+
 
 const imagesDom = document.querySelectorAll('.img-container img');
 console.log(imagesDom);
 
 const slideDom = document.querySelectorAll('.img-slide img');
 
+const titleDom = document.querySelectorAll('.caption .title');
+const textDom = document.querySelectorAll('.caption .subtitle');
+
 //preso elemento 0
 imagesDom[0].classList.add('first', 'active');
+slideDom[0].classList.add('first', 'preview');
+titleDom[0].classList.add('active');
+textDom[0].classList.add('active');
 
 //preso elemento ultimo
 imagesDom[imagesDom.length - 1].classList.add('last');
-
-slideDom[0].classList.add('first', 'preview');
-slideDom[dotsDom.length - 1].classList.add('last');
+slideDom[slideDom.length - 1].classList.add('last');
+titleDom[titleDom.length - 1].classList.add('last');
+textDom[textDom.length - 1].classList.add('last');
 
 
 //Consegna:
