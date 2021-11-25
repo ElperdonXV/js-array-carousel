@@ -1,23 +1,23 @@
 * {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
 .container {
-  position: relative;
-  width: 100%;
-  height: 100vh;
-  background-color: grey;
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    background-color: grey;
 }
 .slider {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 80%;
-  height: 60%;
-  background-color: blue;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 80%;
+    height: 60%;
+    background-color: blue;
 }
 
 .img-slide{
@@ -29,12 +29,6 @@
     overflow: hidden;
 }
 
-.slider-controller{
-    position: relative;
-    height: 100%;
-    width: 100%;
-}
-
 .next,
 .prev {
     position: absolute;
@@ -43,12 +37,13 @@
     color: white;
     font-size: 2.5em;
     opacity: 70%;
+    z-index: 2;
 }
 .prev {
-  top: 6%;
+  top: 3%;
 }
 .next {
-  bottom: 6%;
+  bottom: 3%;
 }
 
 .able{
@@ -58,22 +53,29 @@
 
 .img-container,
 .img-container .img {
-  width: 100%;
-  height: 100%;
+    width: 80%;
+    height: 100%;
 }
 
 .img-container img{
-  display: none;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
+    display: none;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
 }
 .images-container img.active {
-  display: block;
+    display: block;
 }
 
 
 .img-slide img{
-  width: 100%;
-  object-fit: cover;
+    width: 100%;
+    object-fit: cover;
+    filter: brightness(50%);
+    margin: -2px 0;
+}
+
+.img-slide img.preview{
+    filter: brightness(100%);
+    border: 3px solid lightgrey;
 }

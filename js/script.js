@@ -45,6 +45,9 @@ for (let index = 0; index < items.length; index++) {
   //  containerDots.innerHTML += dot;
 }
 
+const imagesDom = document.querySelectorAll('.slider img');
+console.log(imagesDom);
+
 
 
 
