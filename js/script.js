@@ -12,7 +12,7 @@ const title = [
     'Gran Bretagna',
     'Germania',
     'Paradise'
-]
+];
 
 const text = [
     'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Et temporibus voluptatum suscipit tempore aliquid deleniti aut veniam inventore eligendi ex ad ullam, cumque provident totam omnis, magnam dolores dolorum corporis.',
@@ -20,58 +20,95 @@ const text = [
     'Lorem ipsum, dolor sit amet consectetur adipisicing elit.',
     'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Et temporibus voluptatum suscipit tempore aliquid deleniti aut veniam inventore eligendi ex ad ullam,',
     'Et temporibus voluptatum suscipit tempore aliquid deleniti aut veniam inventore eligendi ex ad ullam,',
-]
+];
 
+const itemsContainer = document.querySelector('.slider .sx');
+const thumbsContainer = document.querySelector('.slider .dx');
 
+for (let i = 0; i < items.length; i++) {
+    let classElement = '';
+    if (i == 0) {
+        classElement = 'first active';
+    } else if (i == items.length - 1) { 
+        classElement = 'last';
+    }
 
-const containerImages = document.querySelector('.slider  .img-container');
-const containerController = document.querySelector('.img-slide');
-const containerTitle = document.querySelector('.caption .title');
-const containerText = document.querySelector('.caption .subtitle');
-//const containerDots = document.querySelector('.slider  .list');
+    const tag = `
+        <div class="anteprima ${classElement}">
+            <img src="${items[i]}" alt="">
+            <div class ="text">
+            <h3>${title[i]}</h3>
+            <p>${text[i]}</p>
+        </div>
+    `;
+    const tagThumb = `
+        <div class="miniature ${classElement}">
+             <img src="${items[i]}" alt="">
+        </div>
+    `;
 
-//girato sull-array delle immagini
-for (let index = 0; index < items.length; index++) {
-    let image = `<img src="${items[index]}" alt="">`;
-    let titleGroup = `<h1>${title[index]}</h1>`;
-    let textGroup = `<h2>${text[index]}</h2>`;
-    //let dot = `<div class="list-item"></div>`;
-
-    // if (index == 0) {
-    //   image = `<img class="first active" src="${images[index]}" alt="">`;
-    // }
-    // else if (index == images.length - 1) {
-    //   image = `<img class="last" src="${images[index]}" alt="">`;
-    // }
-
-    containerImages.innerHTML += image;
-    containerController.innerHTML += image;
-    containerTitle.innerHTML += titleGroup;
-    containerText.innerHTML += textGroup;
-  //  containerDots.innerHTML += dot;
+    itemsContainer.innerHTML += tag;
+    thumbsContainer.innerHTML += tagThumb;
 }
 
+const buttonNext = document.querySelector('.slider .dx .next');
+const buttonPrev = document.querySelector('.slider .dx .prev');
+
+buttonNext.addEventListener('click',
+    function () {
+        const elementActive = document.querySelector('.slider .sx .anteprima.active');
+        const thumbActive = document.querySelector('.slider .dx .miniature.active');
+        const listClasses = elementActive.classList;
+        let last = false;
+        for (let i = 0; i < listClasses.length; i++) {
+            if (listClasses[i] == 'last') {
+                last = true;
+            }
+        }
+
+        let lastThumb = thumbActive.classList.contains('last');
+        if (last == false) {
+            elementActive.classList.remove('active');
+            const elementNext = elementActive.nextElementSibling;
+            elementNext.classList.add('active');
+        }
+        if (lastThumb == false) {
+            thumbActive.classList.remove('active');
+            const thumbNext = thumbActive.nextElementSibling;
+            thumbNext.classList.add('active');
+        }
 
 
-const imagesDom = document.querySelectorAll('.img-container img');
-console.log(imagesDom);
 
-const slideDom = document.querySelectorAll('.img-slide img');
+    }
+);
 
-const titleDom = document.querySelectorAll('.caption .title');
-const textDom = document.querySelectorAll('.caption .subtitle');
 
-//preso elemento 0
-imagesDom[0].classList.add('first', 'active');
-slideDom[0].classList.add('first', 'preview');
-titleDom[0].classList.add('active');
-textDom[0].classList.add('active');
+buttonPrev.addEventListener('click',
+    function () {
+        const elementActive = document.querySelector('.slider .sx .anteprima.active');
+        const thumbActive = document.querySelector('.slider .dx .miniature.active');
+        const listClasses = elementActive.classList; 
+        let first = false;
+        for (let i = 0; i < listClasses.length; i++) {
+            if (listClasses[i] == 'first') {
+                first = true;
+            }
+        }
+         let firstThumb = thumbActive.classList.contains('first');
+        if (first == false) { 
+            elementActive.classList.remove('active');
+            const elementPrev = elementActive.previousElementSibling;
+            elementPrev.classList.add('active');
+        }
 
-//preso elemento ultimo
-imagesDom[imagesDom.length - 1].classList.add('last');
-slideDom[slideDom.length - 1].classList.add('last');
-titleDom[titleDom.length - 1].classList.add('last');
-textDom[textDom.length - 1].classList.add('last');
+        if (firstThumb == false) {
+            thumbActive.classList.remove('active');
+            const thumbPrev = thumbActive.previousElementSibling;
+            thumbPrev.classList.add('active');
+        }
+    }
+);
 
 
 //Consegna:
